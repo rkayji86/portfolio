@@ -12,11 +12,10 @@ import Footer from './components/Footer'
 function App() {
 
   return (
-    <div className='min-h-screen'>
+    <div className='min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300'>
       <Navigation />
       <HeroSection />
       <AboutSection />
-      <SkillsSection />
       <SkillsSection />
       <ProjectSection />
       <ServicesSection />

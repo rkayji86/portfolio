@@ -34,9 +34,6 @@ export const ThemeProvider = ({ children }) => {
         // 2. Add the new theme class
         root.classList.add(newTheme);
 
-        // 3. Force color-scheme CSS property
-        root.style.colorScheme = newTheme;
-
         // 3. Update localStorage with the new theme
         localStorage.setItem('theme', newTheme);
     }, [isDarkMode]);
