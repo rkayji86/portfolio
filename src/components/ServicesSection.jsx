@@ -1,36 +1,37 @@
-import { Code, Database, Smartphone, Globe, Zap, Shield } from 'lucide-react';
+import { Code, Database, Smartphone, Globe, Zap, Shield, MessageCircleCode, BugOff } from 'lucide-react';
+import { SiFastapi } from 'react-icons/si';
 
 const ServicesSection = () => {
     const services = [
         {
             icon: <Code className="w-8 h-8" />,
             title: "Full Stack Development",
-            description: "End-to-end web application development using modern technologies and best practices."
+            description: "End-to-end development of scalable, secure, and maintainable web applications using Laravel, PHP, React, and Node.js, following modern best practices."
         },
         {
-            icon: <Database className="w-8 h-8" />,
-            title: "API Development",
-            description: "RESTful API design and development with proper documentation and security measures."
+            icon: <SiFastapi className="w-8 h-8" />,
+            title: "API Development & Integration",
+            description: "Custom RESTful API creation with Laravel or Node.js/Express, including secure authentication (Sanctum/JWT), well-documented endpoints, and smooth third-party service integrations."
         },
         {
             icon: <Smartphone className="w-8 h-8" />,
-            title: "Responsive Design",
-            description: "Mobile-first responsive designs that work seamlessly across all devices and screen sizes."
+            title: "Authentication & Security",
+            description: "Implementation of secure login systems, role-based access control, and data protection practices, ensuring applications meet industry standards for privacy and security."
         },
         {
-            icon: <Globe className="w-8 h-8" />,
-            title: "Web Optimization",
-            description: "Performance optimization, SEO implementation, and speed improvements for better user experience."
+            icon: <MessageCircleCode className="w-8 h-8" />,
+            title: "Real-Time Applications",
+            description: "Development of real-time features like chat systems, notifications, and live updates using Node.js, Express, and WebSockets, enhancing user engagement and experience."
         },
         {
-            icon: <Zap className="w-8 h-8" />,
+            icon: <BugOff className="w-8 h-8" />,
             title: "Bug Fixing & Maintenance",
-            description: "Quick bug fixes, feature updates, and ongoing maintenance for existing applications."
+            description: "Quick resolution of bugs, errors, and performance bottlenecks, along with feature updates, security patches, and continuous monitoring. I provide ongoing maintenance to ensure your applications stay stable, efficient, and up-to-date with evolving technologies."
         },
         {
-            icon: <Shield className="w-8 h-8" />,
-            title: "Security Audits",
-            description: "Comprehensive security reviews and implementation of security best practices."
+            icon: <Database className="w-8 h-8" />,
+            title: "Database Design & Management",
+            description: "Structuring efficient and scalable database schemas, handling migrations, and optimizing queries for MySQL and PostgreSQL to ensure reliability and high performance."
         }
     ];
 

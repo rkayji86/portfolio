@@ -1,4 +1,3 @@
-import './App.css'
 import Navigation from './components/Navigation'
 import HeroSection from './components/HeroSection'
 import AboutSection from './components/AboutSection'

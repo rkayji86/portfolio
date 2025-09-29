@@ -1,13 +1,29 @@
+import {
+  SiJavascript,
+  SiReact,
+  SiNodedotjs,
+  SiPhp,
+  SiTailwindcss,
+  SiGit,
+  SiMysql,
+  SiNextdotjs,
+  SiDocker,
+  SiLaravel,
+  SiPostgresql
+} from 'react-icons/si';
 const SkillsSection = () => {
     const skills = [
-        { name: 'React', icon: '⚛️', level: 95 },
-        { name: 'Laravel', icon: '🔶', level: 90 },
-        { name: 'Node.js', icon: '🟢', level: 88 },
-        { name: 'PHP', icon: '🐘', level: 92 },
-        { name: 'MySQL', icon: '🗄️', level: 85 },
-        { name: 'PostgreSQL', icon: '🐘', level: 80 },
-        { name: 'TailwindCSS', icon: '🎨', level: 90 },
-        { name: 'JavaScript', icon: '📜', level: 93 }
+        { name: 'PHP', icon: <SiPhp className=" text-indigo-400" />, level: 80 },
+        { name: 'Laravel', icon: <SiLaravel className=" text-red-600" />, level: 90 },
+        { name: 'React', icon: <SiReact className=" text-sky-400" />, level: 85 },
+        { name: 'Node.js(Express)', icon: <SiNodedotjs className=" text-green-500" />, level: 80 },
+        { name: 'TailwindCSS', icon: <SiTailwindcss className=" text-teal-400" />, level: 90 },
+        { name: 'JavaScript', icon: <SiJavascript className=" text-yellow-400" />, level: 85 },
+        { name: 'NextJs', icon: <SiNextdotjs className="" />, level: 65 },
+        { name: 'MySQL', icon: <SiMysql className=" text-blue-600" />, level: 85 },
+        { name: 'PostgreSQL', icon: <SiPostgresql className=" text-blue-900" />, level: 75 },
+        { name: 'Docker', icon: <SiDocker className=" text-blue-500" />, level: 70 },
+        { name: 'Git & GitHub', icon: <SiGit className=" text-red-500" />, level: 85 },
     ];
 
     return (
@@ -24,7 +40,7 @@ const SkillsSection = () => {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     {skills.map((skill, index) => (
                         <div key={index} className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm hover:shadow-md dark:shadow-lg transition-all duration-200 text-center">
-                            <div className="text-4xl mb-4">{skill.icon}</div>
+                            <div className="text-4xl mb-4 flex justify-center items-center">{skill.icon}</div>
                             <h3 className="font-semibold text-gray-900 dark:text-white mb-2 transition-colors duration-200">{skill.name}</h3>
                             <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2 mb-2">
                                 <div

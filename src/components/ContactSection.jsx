@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Linkedin, Star } from "lucide-react";
+import { Mail, Linkedin, Star, Github } from "lucide-react";
 
 const ContactSection = () => {
     const [formData, setFormData] = useState({
@@ -49,20 +49,29 @@ const ContactSection = () => {
 
                         <div className="space-y-4">
                             <a
-                                href="mailto:john.doe@email.com"
+                                href="mailto:rohitkumar001888@gmail.com"
                                 className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
                             >
                                 <Mail className="w-5 h-5 mr-4" />
-                                john.doe@email.com
+                                rohitkumar001888@gmail.com
                             </a>
                             <a
-                                href="https://linkedin.com/in/johndoe"
+                                href="https://www.linkedin.com/in/mrrkayji/"
                                 className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
                                 <Linkedin className="w-5 h-5 mr-4" />
                                 LinkedIn Profile
+                            </a>
+                            <a
+                                href="https://github.com/rkayji86"
+                                className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <Github className="w-5 h-5 mr-4" />
+                                GitHub Profile
                             </a>
                             <a
                                 href="https://fiverr.com/johndoe"
