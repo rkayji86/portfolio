@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Mail, Linkedin, Star, Github } from "lucide-react";
+import { Mail, Linkedin, Star, Github, CheckCircle, AlertCircle, Loader } from "lucide-react";
+import { sendContactForm } from "../utils/api";
 
 const ContactSection = () => {
     const [formData, setFormData] = useState({
@@ -8,14 +9,55 @@ const ContactSection = () => {
         message: ''
     });
 
-    const handleSubmit = () => {
-        // Handle form submission here
-        if (formData.name && formData.email && formData.message) {
-            console.log('Form submitted:', formData);
-            alert('Message sent! I\'ll get back to you soon.');
-            setFormData({ name: '', email: '', message: '' });
-        } else {
-            alert('Please fill in all fields.');
+    const [loading, setLoading] = useState(false);
+    const [feedback, setFeedback] = useState({
+        type: '', // 'success', 'error', or ''
+        message: '',
+        visible: false
+    });
+
+    const showFeedback = (type, message) => {
+        setFeedback({ type, message, visible: true });
+        // Auto-hide after 5 seconds for success, longer for errors
+        setTimeout(() => {
+            setFeedback(prev => ({ ...prev, visible: false }));
+        }, type === 'success' ? 5000 : 8000);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        
+        // Reset previous feedback
+        setFeedback({ type: '', message: '', visible: false });
+        
+        // Validation
+        if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+            showFeedback('error', 'Please fill in all fields before submitting.');
+            return;
+        }
+
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+            showFeedback('error', 'Please enter a valid email address.');
+            return;
+        }
+
+        try {
+            setLoading(true);
+            const result = await sendContactForm(formData);
+            // Success feedback
+            showFeedback('success', result.message || "Thanks for reaching out! I'll get back to you within 24 hours.");
+            
+            // Clear form on success
+            setFormData({ name: "", email: "", message: "" });
+        } catch (error) {
+            // Error feedback with actionable information
+            const errorMessage = error.message || 
+                "Unable to send your message right now. Please try again or contact me directly via email.";
+            showFeedback('error', errorMessage);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -24,11 +66,61 @@ const ContactSection = () => {
             ...formData,
             [e.target.name]: e.target.value
         });
+        
+        // Clear feedback when user starts typing again
+        if (feedback.visible) {
+            setFeedback(prev => ({ ...prev, visible: false }));
+        }
     };
 
     return (
         <section id="contact" className="py-20 bg-white dark:bg-gray-900 transition-colors duration-200">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Feedback Toast */}
+                {feedback.visible && (
+                    <div className={`fixed top-4 right-4 z-50 max-w-md p-4 rounded-lg shadow-lg transform transition-all duration-300 ${
+                        feedback.type === 'success' 
+                            ? 'bg-green-50 dark:bg-green-900 border border-green-200 dark:border-green-700' 
+                            : 'bg-red-50 dark:bg-red-900 border border-red-200 dark:border-red-700'
+                    }`}>
+                        <div className="flex items-start">
+                            <div className="flex-shrink-0">
+                                {feedback.type === 'success' ? (
+                                    <CheckCircle className="w-5 h-5 text-green-400" />
+                                ) : (
+                                    <AlertCircle className="w-5 h-5 text-red-400" />
+                                )}
+                            </div>
+                            <div className="ml-3">
+                                <p className={`text-sm font-medium ${
+                                    feedback.type === 'success' 
+                                        ? 'text-green-800 dark:text-green-200' 
+                                        : 'text-red-800 dark:text-red-200'
+                                }`}>
+                                    {feedback.type === 'success' ? 'Message Sent!' : 'Error'}
+                                </p>
+                                <p className={`mt-1 text-sm ${
+                                    feedback.type === 'success' 
+                                        ? 'text-green-700 dark:text-green-300' 
+                                        : 'text-red-700 dark:text-red-300'
+                                }`}>
+                                    {feedback.message}
+                                </p>
+                            </div>
+                            <button
+                                onClick={() => setFeedback(prev => ({ ...prev, visible: false }))}
+                                className={`ml-auto pl-3 ${
+                                    feedback.type === 'success' 
+                                        ? 'text-green-400 hover:text-green-500' 
+                                        : 'text-red-400 hover:text-red-500'
+                                }`}
+                            >
+                                ×
+                            </button>
+                        </div>
+                    </div>
+                )}
+
                 <div className="text-center mb-16">
                     <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-200">Get In Touch</h2>
                     <div className="w-20 h-1 bg-blue-600 dark:bg-blue-500 mx-auto mb-6"></div>
@@ -87,10 +179,10 @@ const ContactSection = () => {
 
                     {/* Contact Form */}
                     <div>
-                        <div className="space-y-6">
+                        <form onSubmit={handleSubmit} className="space-y-6">
                             <div>
                                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-200">
-                                    Your Name
+                                    Your Name *
                                 </label>
                                 <input
                                     type="text"
@@ -98,14 +190,15 @@ const ContactSection = () => {
                                     name="name"
                                     value={formData.name}
                                     onChange={handleChange}
-                                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200"
+                                    disabled={loading}
+                                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                                     placeholder="Enter your name"
                                 />
                             </div>
 
                             <div>
                                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-200">
-                                    Email Address
+                                    Email Address *
                                 </label>
                                 <input
                                     type="email"
@@ -113,38 +206,48 @@ const ContactSection = () => {
                                     name="email"
                                     value={formData.email}
                                     onChange={handleChange}
-                                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200"
+                                    disabled={loading}
+                                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                                     placeholder="Enter your email"
                                 />
                             </div>
 
                             <div>
                                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-200">
-                                    Message
+                                    Message *
                                 </label>
                                 <textarea
                                     id="message"
                                     name="message"
                                     value={formData.message}
                                     onChange={handleChange}
+                                    disabled={loading}
                                     rows={5}
-                                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200 resize-none"
+                                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200 resize-none disabled:opacity-50 disabled:cursor-not-allowed"
                                     placeholder="Tell me about your project..."
                                 />
                             </div>
 
                             <button
-                                onClick={handleSubmit}
-                                className="w-full bg-blue-600 dark:bg-blue-700 text-white py-3 px-6 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-800 transition-colors duration-200 font-semibold"
+                                type="submit"
+                                disabled={loading}
+                                className="w-full bg-blue-600 dark:bg-blue-700 text-white py-3 px-6 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-800 transition-colors duration-200 font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                             >
-                                Send Message
+                                {loading ? (
+                                    <>
+                                        <Loader className="w-5 h-5 mr-2 animate-spin" />
+                                        Sending Message...
+                                    </>
+                                ) : (
+                                    'Send Message'
+                                )}
                             </button>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </section>
     );
-}
+};
 
 export default ContactSection;
