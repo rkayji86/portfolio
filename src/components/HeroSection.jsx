@@ -5,7 +5,7 @@ const HeroSection = () => {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <div className="mb-8">
                     <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-600 dark:to-indigo-700 flex items-center justify-center text-white text-4xl font-bold">
-                        JD
+                        RK
                     </div>
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-200">
                         Rohit Kumar
