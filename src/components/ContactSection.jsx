@@ -166,7 +166,7 @@ const ContactSection = () => {
                                 GitHub Profile
                             </a>
                             <a
-                                href="https://fiverr.com/johndoe"
+                                href="https://www.fiverr.com/mrrkayj86"
                                 className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
                                 target="_blank"
                                 rel="noopener noreferrer"
