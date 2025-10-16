@@ -1,13 +1,14 @@
 import { Github, ExternalLink } from 'lucide-react';
+import payroll from '../assets/images/projects/payroll-dashboard.png';
 const ProjectSection = () => {
     const projects = [
         {
-            title: "E-Commerce Platform",
-            description: "A full-featured e-commerce platform with user authentication, payment integration, and admin dashboard.",
-            tech: ["React", "Laravel", "MySQL", "Stripe API"],
-            github: "https://github.com/username/project1",
+            title: "PayRoll CRM",
+            description: "A complete Payroll and CRM platform built with React, Node.js, and PostgreSQL to streamline employee, client, and company management. It features advanced role-based permissions, payroll automation, real-time chat, and integrated payment handling via Razorpay — helping businesses manage operations efficiently while maintaining scalability and security.",
+            tech: ["React", "Express", "NodeJs", "PostgreSQL", "Socket.io", "RazorPay", "Redux Toolkit", "Tailwind CSS", "Firebase Notifications"],
+            github: "https://github.com/rkayji86/payrol-crm.git",
             live: "https://project1.com",
-            image: "🛒"
+            image: payroll
         },
         {
             title: "Task Management App",
@@ -49,8 +50,8 @@ const ProjectSection = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {projects.map((project, index) => (
                         <div key={index} className="bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg dark:shadow-xl transition-all duration-200">
-                            <div className="h-48 bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900 dark:to-indigo-900 flex items-center justify-center text-6xl">
-                                {project.image}
+                            <div className="bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900 dark:to-indigo-900">
+                                <img className="w-full h-70" src={project.image} />
                             </div>
                             <div className="p-6">
                                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 transition-colors duration-200">{project.title}</h3>
