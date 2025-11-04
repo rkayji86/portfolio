@@ -36,7 +36,7 @@ const ServicesSection = () => {
     ];
 
     return (
-        <section id="services" className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-200">
+        <section id="services" className="py-20 bg-gray-50 dark:bg-gradient-to-tr dark:from-black dark:to-gray-900 transition-colors duration-200">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-200">Services I Offer</h2>
@@ -48,7 +48,7 @@ const ServicesSection = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {services.map((service, index) => (
-                        <div key={index} className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm hover:shadow-md dark:shadow-lg transition-all duration-200">
+                        <div key={index} className="bg-white dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-700 p-6 rounded-lg shadow-sm hover:shadow-md dark:shadow-lg dark:hover:shadow-xl transition-all duration-200 border dark:border-gray-600 hover:dark:border-gray-500">
                             <div className="text-blue-600 dark:text-blue-400 mb-4 transition-colors duration-200">
                                 {service.icon}
                             </div>
