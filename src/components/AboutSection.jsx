@@ -17,19 +17,19 @@ const AboutSection = () => {
                         </p>
 
                         <div className="grid grid-cols-2 gap-6">
-                            <div className="liquid-card dark:liquid-card p-4 rounded-lg transition-all duration-300">
+                            <div>
                                 <h3 className="font-semibold text-gray-900 dark:text-white mb-2 transition-colors duration-200">Experience</h3>
                                 <p className="text-gray-600 dark:text-gray-400 transition-colors duration-200">4.5+ Years</p>
                             </div>
-                            <div className="liquid-card dark:liquid-card p-4 rounded-lg transition-all duration-300">
+                            <div>
                                 <h3 className="font-semibold text-gray-900 dark:text-white mb-2 transition-colors duration-200">Projects Completed</h3>
                                 <p className="text-gray-600 dark:text-gray-400 transition-colors duration-200">10+ Projects</p>
                             </div>
-                            <div className="liquid-card dark:liquid-card p-4 rounded-lg transition-all duration-300">
+                            <div>
                                 <h3 className="font-semibold text-gray-900 dark:text-white mb-2 transition-colors duration-200">Happy Clients</h3>
                                 <p className="text-gray-600 dark:text-gray-400 transition-colors duration-200">Currently building portfolio clients</p>
                             </div>
-                            <div className="liquid-card dark:liquid-card p-4 rounded-lg transition-all duration-300">
+                            <div>
                                 <h3 className="font-semibold text-gray-900 dark:text-white mb-2 transition-colors duration-200">Response Time</h3>
                                 <p className="text-gray-600 dark:text-gray-400 transition-colors duration-200">Within 24 Hours</p>
                             </div>
@@ -37,7 +37,7 @@ const AboutSection = () => {
                     </div>
 
                     <div className="lg:pl-12">
-                        <div className="bg-gray-50 dark:liquid-card p-8 rounded-lg transition-all duration-300">
+                        <div className="bg-gray-50 dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 p-8 rounded-lg transition-colors duration-200 border dark:border-gray-700">
                             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6 transition-colors duration-200">What I Do</h3>
                             <ul className="space-y-4">
                                 <li className="flex items-center">
