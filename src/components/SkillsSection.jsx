@@ -39,16 +39,14 @@ const SkillsSection = () => {
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     {skills.map((skill, index) => (
-                        <div key={index} className="bg-white dark:liquid-card p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 text-center group">
-                            <div className="text-4xl mb-4 flex justify-center items-center transform group-hover:scale-110 transition-transform duration-300">{skill.icon}</div>
+                        <div key={index} className="bg-white dark:bg-gradient-to-b dark:from-gray-800 dark:to-gray-900 p-6 rounded-lg shadow-sm hover:shadow-md dark:shadow-lg dark:hover:shadow-xl transition-all duration-200 text-center border dark:border-gray-700 hover:dark:border-gray-600">
+                            <div className="text-4xl mb-4 flex justify-center items-center">{skill.icon}</div>
                             <h3 className="font-semibold text-gray-900 dark:text-white mb-2 transition-colors duration-200">{skill.name}</h3>
-                            <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-2 overflow-hidden">
+                            <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-2">
                                 <div
-                                    className="bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500 h-2 rounded-full transition-all duration-1000 relative overflow-hidden"
+                                    className="bg-blue-600 dark:bg-blue-500 h-2 rounded-full transition-all duration-1000"
                                     style={{ width: `${skill.level}%` }}
-                                >
-                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-30 animate-pulse"></div>
-                                </div>
+                                ></div>
                             </div>
                             <span className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-200">{skill.level}%</span>
                         </div>
