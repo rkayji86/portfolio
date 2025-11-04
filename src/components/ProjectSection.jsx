@@ -37,7 +37,7 @@ const ProjectSection = () => {
     ];
 
     return (
-        <section id="projects" className="py-20 bg-white dark:bg-gray-900 transition-colors duration-200">
+        <section id="projects" className="py-20 bg-white dark:bg-gradient-to-bl dark:from-gray-900 dark:to-black transition-colors duration-200">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-200">Featured Projects</h2>
@@ -49,8 +49,8 @@ const ProjectSection = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {projects.map((project, index) => (
-                        <div key={index} className="bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg dark:shadow-xl transition-all duration-200">
-                            <div className="bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900 dark:to-indigo-900">
+                        <div key={index} className="bg-gray-50 dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 rounded-lg overflow-hidden hover:shadow-lg dark:shadow-xl dark:hover:shadow-2xl transition-all duration-200 border dark:border-gray-700 hover:dark:border-gray-600">
+                            <div className="bg-gradient-to-br from-blue-100 to-indigo-100 dark:bg-gradient-to-br dark:from-gray-700 dark:to-gray-800">
                                 <img className="w-full h-70" src={project.image} />
                             </div>
                             <div className="p-6">
@@ -59,7 +59,7 @@ const ProjectSection = () => {
 
                                 <div className="flex flex-wrap gap-2 mb-4">
                                     {project.tech.map((tech, techIndex) => (
-                                        <span key={techIndex} className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm transition-colors duration-200">
+                                        <span key={techIndex} className="bg-blue-100 dark:bg-gradient-to-r dark:from-gray-700 dark:to-gray-600 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm transition-colors duration-200 border dark:border-gray-600">
                                             {tech}
                                         </span>
                                     ))}
