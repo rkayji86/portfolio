@@ -49,9 +49,10 @@ const ProjectSection = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {projects.map((project, index) => (
-                        <div key={index} className="bg-gray-50 dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 rounded-lg overflow-hidden hover:shadow-lg dark:shadow-xl dark:hover:shadow-2xl transition-all duration-200 border dark:border-gray-700 hover:dark:border-gray-600">
-                            <div className="bg-gradient-to-br from-blue-100 to-indigo-100 dark:bg-gradient-to-br dark:from-gray-700 dark:to-gray-800">
-                                <img className="w-full h-70" src={project.image} />
+                        <div key={index} className="bg-gray-50 dark:liquid-card rounded-lg overflow-hidden transition-all duration-300 group">
+                            <div className="bg-gradient-to-br from-blue-100 to-indigo-100 dark:glass-effect relative overflow-hidden">
+                                <img className="w-full h-70 object-cover transition-transform duration-300 group-hover:scale-105" src={project.image} alt={project.title} />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             </div>
                             <div className="p-6">
                                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 transition-colors duration-200">{project.title}</h3>
@@ -59,7 +60,7 @@ const ProjectSection = () => {
 
                                 <div className="flex flex-wrap gap-2 mb-4">
                                     {project.tech.map((tech, techIndex) => (
-                                        <span key={techIndex} className="bg-blue-100 dark:bg-gradient-to-r dark:from-gray-700 dark:to-gray-600 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm transition-colors duration-200 border dark:border-gray-600">
+                                        <span key={techIndex} className="bg-blue-100 dark:glass-effect text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm transition-all duration-200 hover:scale-105">
                                             {tech}
                                         </span>
                                     ))}
@@ -68,7 +69,7 @@ const ProjectSection = () => {
                                 <div className="flex gap-4">
                                     <a
                                         href={project.github}
-                                        className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+                                        className="flex items-center px-4 py-2 rounded-lg liquid-btn-secondary text-gray-300 hover:text-white transition-all duration-200"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
@@ -77,7 +78,7 @@ const ProjectSection = () => {
                                     </a>
                                     <a
                                         href={project.live}
-                                        className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+                                        className="flex items-center px-4 py-2 rounded-lg liquid-btn text-white transition-all duration-200"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
