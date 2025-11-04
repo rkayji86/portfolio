@@ -18,3 +18,22 @@ html, body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Custom dark mode black gradients */
+@layer utilities {
+  .dark-gradient-bg {
+    @apply dark:bg-gradient-to-br dark:from-black dark:to-gray-900;
+  }
+  
+  .dark-gradient-section {
+    @apply dark:bg-gradient-to-r dark:from-gray-900 dark:to-black;
+  }
+  
+  .dark-gradient-card {
+    @apply dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800;
+  }
+  
+  .dark-black-gradient {
+    @apply dark:bg-gradient-to-br dark:from-black dark:via-gray-900 dark:to-black;
+  }
+}
