@@ -1,6 +1,6 @@
 const AboutSection = () => {
     return (
-        <section id="about" className="py-20 bg-white dark:bg-gray-900 transition-colors duration-200">
+        <section id="about" className="py-20 bg-white dark:bg-gradient-to-r dark:from-gray-900 dark:to-black transition-colors duration-200">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-200">About Me</h2>
@@ -37,7 +37,7 @@ const AboutSection = () => {
                     </div>
 
                     <div className="lg:pl-12">
-                        <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg transition-colors duration-200">
+                        <div className="bg-gray-50 dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 p-8 rounded-lg transition-colors duration-200 border dark:border-gray-700">
                             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6 transition-colors duration-200">What I Do</h3>
                             <ul className="space-y-4">
                                 <li className="flex items-center">
