@@ -1,5 +1,7 @@
 import { Github, ExternalLink } from 'lucide-react';
 import payroll from '../assets/images/projects/payroll-dashboard.png';
+import analytics from '../assets/images/projects/analytics.jpeg';
+
 const ProjectSection = () => {
     const projects = [
         {
@@ -11,12 +13,12 @@ const ProjectSection = () => {
             image: payroll
         },
         {
-            title: "Task Management App",
-            description: "Collaborative task management application with real-time updates and team collaboration features.",
-            tech: ["Node.js", "React", "PostgreSQL", "Socket.io"],
-            github: "https://github.com/username/project2",
+            title: "Analytics Dashboard",
+            description: "A real-time analytics dashboard built using Laravel, Laravel UI, MySQL, and Pusher for live updates. The system includes Admin, Manager, and User roles with dedicated access levels. It displays key product metrics through interactive charts and tables, enabling fast data insights. Designed with secure authentication, role-based permissions, and dynamic chart rendering, this dashboard helps teams monitor product performance efficiently.",
+            tech: ["Laravel", "Mysql", "Pusher", "Laravel UI", "Chart.js"],
+            github: "https://github.com/rkayji86/analytics-dashboard.git",
             live: "https://project2.com",
-            image: "📋"
+            image: analytics
         },
         {
             title: "Restaurant Booking System",
